@@ -1,0 +1,59 @@
+body
+  background-color: #eeeeee
+
+.book-container
+  outline: 1px solid #aaaaaa
+  width: 350px
+  background-color: #fff
+  float: left
+  margin: 5px
+  overflow: hidden
+
+  img
+    float: left
+    margin: 10px
+    max-height: 100%
+
+  ul
+    list-style-type: none
+    margin-bottom: 0
+
+  button
+    float: right
+    margin: 10px
+
+#add-book
+  input
+    display: block
+    margin-bottom: 10px
+    float: left
+
+  label
+    @extend input
+    width: 100px
+    margin-right: 10px
+    text-align: right
+    line-height: 25px
+
+  label[for="title"], label[for="releaseDate"]
+    clear: both
+
+  button
+    display: block
+    margin: 5px 20px 10px 10px
+    float: right
+    clear: both
+
+  div
+    width: 550px
+
+  div:after
+    content: ""
+    display: block
+    height: 0
+    visibility: hidden
+    clear: both
+    font-size: 0
+    line-height: 0
+
+
