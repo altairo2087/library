@@ -37,7 +37,7 @@
           return formData[el.id] = $(el).val();
         }
       });
-      return this.collection.add(new app.Book(formData));
+      return this.collection.create(formData);
     }
   });
 

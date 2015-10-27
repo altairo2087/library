@@ -26,4 +26,4 @@ app.LibraryView = Backbone.View.extend
       .children 'input'
       .each (i,el)->
         if $(el).val() isnt '' then formData[el.id] = $(el).val()
-    @collection.add new app.Book formData
+    @collection.create formData

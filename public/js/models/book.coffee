@@ -7,3 +7,6 @@ app.Book = Backbone.Model.extend
     author: 'Unknown'
     releaseDate: 'Unknown'
     keywords: 'None'
+  parse: (res)->
+    res.id = res._id
+    res
