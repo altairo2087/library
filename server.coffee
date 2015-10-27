@@ -8,10 +8,14 @@ errorhandler = require 'errorhandler'
 
 mongoose.connect('mongodb://localhost/library');
 
+KeywordSchema = new mongoose.Schema
+  keyword: String
 BookSchema = new mongoose.Schema
   title: String
   author: String
-  releaseDate: Date
+  releaseDate: Date,
+  keywords: [KeywordSchema]
+
 BookModel = mongoose.model 'Book', BookSchema
 
 app = express()
@@ -35,6 +39,7 @@ router.post '/books', (req,res)->
     title: req.body.title
     author: req.body.author
     releaseDate: req.body.releaseDate
+    keywords:  req.body.keywords
   book.save (err)->
     if err then console.log err else console.log 'created'
   res.send book
@@ -47,6 +52,7 @@ router.put '/books/:id', (req,res)->
     book.title = req.body.title
     book.author = req.body.author
     book.releaseDate = req.body.releaseDate
+    book.keywords =  req.body.keywords
     book.save (err)->
       if err then console.log err else console.log 'book updated'
       res.send book
@@ -60,5 +66,6 @@ router.delete '/books/:id', (req,res)->
         console.log 'Book removed'
         res.send ''
 app.use '/api', router
+app.use('/', express.static('public'));
 
 app.listen PORT
