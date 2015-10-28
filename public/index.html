@@ -41,7 +41,11 @@
             <li>{{title}}</li>
             <li>{{author}}</li>
             <li>{{releaseDate}}</li>
-            <li>{{keywords}}</li>
+            <li>
+                {{#each keywords}}
+                    {{this.keyword}}{{#unless @last}},{{/unless}}
+                {{/each}}
+            </li>
         </ul>
         <button class="delete">Delete</button>
     </script>

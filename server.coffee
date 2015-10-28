@@ -57,7 +57,7 @@ router.put '/books/:id', (req,res)->
       if err then console.log err else console.log 'book updated'
       res.send book
 router.delete '/books/:id', (req,res)->
-  console.log 'Deleting book with id %d', req.params.id
+  console.log 'Deleting book with id %s', req.params.id
   BookModel.findById req.params.id, (err, book)->
     book.remove (err)->
       if err

@@ -108,7 +108,7 @@
   });
 
   router["delete"]('/books/:id', function(req, res) {
-    console.log('Deleting book with id %d', req.params.id);
+    console.log('Deleting book with id %s', req.params.id);
     return BookModel.findById(req.params.id, function(err, book) {
       return book.remove(function(err) {
         if (err) {

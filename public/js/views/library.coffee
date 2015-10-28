@@ -25,5 +25,13 @@ app.LibraryView = Backbone.View.extend
     $ '#add-book div'
       .children 'input'
       .each (i,el)->
-        if $(el).val() isnt '' then formData[el.id] = $(el).val()
+        if $(el).val() isnt ''
+          if el.id is 'keywords'
+            formData[el.id] = []
+            _.each $(el).val().split(','),(keyword)->
+              formData[el.id].push
+                keyword: keyword
+          else
+            formData[el.id] = $(el).val()
+        $(el).val('')
     @collection.create formData

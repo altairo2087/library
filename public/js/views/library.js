@@ -34,8 +34,18 @@
       formData = {};
       $('#add-book div').children('input').each(function(i, el) {
         if ($(el).val() !== '') {
-          return formData[el.id] = $(el).val();
+          if (el.id === 'keywords') {
+            formData[el.id] = [];
+            _.each($(el).val().split(','), function(keyword) {
+              return formData[el.id].push({
+                keyword: keyword
+              });
+            });
+          } else {
+            formData[el.id] = $(el).val();
+          }
         }
+        return $(el).val('');
       });
       return this.collection.create(formData);
     }
